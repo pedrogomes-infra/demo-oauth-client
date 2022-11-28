@@ -1,0 +1,23 @@
+<div>
+    <h1 class="title">OAuth 2.0 Spring Security Cognito Demo</h1>
+    <div sec:authorize="isAuthenticated()">
+        <div class="box">
+            <p>Hello, <strong th:text="${#authentication.name}"></strong>!</p>
+        </div>
+        <div class="box">OAuth2AuthenticationToken authentication
+            <p><strong th:text="${#authentication}"></strong></p>
+        </div>
+        <div class="box">id_token
+            <p><strong th:text="${#authentication.getPrincipal().getIdToken().getTokenValue()}"></strong></p>
+        </div>
+        <div class="box">access_token
+            <p><strong th:text="${access_token}"></strong></p>
+        </div>
+    </div>
+    <div sec:authorize="isAnonymous()">
+        <div class="box">
+            <a class="button login is-primary" th:href="@{/oauth2/authorization/cognito}">
+                Log in with Amazon Cognito</a>
+        </div>
+    </div>
+</div>
